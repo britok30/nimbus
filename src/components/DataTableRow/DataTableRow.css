@@ -15,3 +15,15 @@ td {
 .data-table-row:last-of-type {
   border-bottom: none;
 }
+
+.data-table-cell__status {
+  display: flex;
+}
+
+.data-table-cell__status-circle {
+  width: 20px;
+  height: 20px;
+  background-color: chartreuse;
+  border-radius: 100%;
+  margin-right: 10px;
+}

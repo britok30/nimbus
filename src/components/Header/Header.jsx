@@ -7,7 +7,7 @@ export const Header = () => {
       <input className="header__checkbox" type="checkbox" />
       <div className="header__details">
         <span className="header__selected">Selected 2</span>
-        <button className="header__download">Download selected</button>
+        <button className="header__download-btn">Download selected</button>
       </div>
     </div>
   );

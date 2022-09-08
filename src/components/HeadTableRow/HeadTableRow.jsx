@@ -8,7 +8,13 @@ export const HeadTableRow = () => {
       <th>Name</th>
       <th>Device</th>
       <th>Path</th>
-      <th>Status</th>
+      <th
+        style={{
+          paddingLeft: "30px",
+        }}
+      >
+        Status
+      </th>
     </tr>
   );
 };

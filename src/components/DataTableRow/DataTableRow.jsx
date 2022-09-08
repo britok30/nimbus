@@ -3,20 +3,38 @@ import { capitalize } from "../../utils";
 import "./DataTableRow.css";
 
 export const DataTableRow = ({ item, index }) => {
-  const [selected, setSelected] = useState(false);
+  const [checked, setChecked] = useState(false);
   return (
-    <tr className="data-table-row" key={index}>
+    <tr
+      className="data-table-row"
+      key={index}
+      onClick={() => setChecked(!checked)}
+    >
       <td>
         <input
-          onClick={() => setSelected(!selected)}
+          className="data-table-row__checkbox"
+          onClick={() => setChecked(!checked)}
           type="checkbox"
-          checked={selected}
+          checked={checked}
         />
       </td>
       <td>{item.name}</td>
       <td>{item.device}</td>
       <td>{item.path}</td>
-      <td>{capitalize(item.status)}</td>
+      <td
+        style={{
+          display: "flex",
+        }}
+      >
+        <div
+          className="data-table-cell__status-circle"
+          style={{
+            visibility: item.status !== "available" ? "hidden" : "visible",
+          }}
+        ></div>
+
+        {capitalize(item.status)}
+      </td>
     </tr>
   );
 };
