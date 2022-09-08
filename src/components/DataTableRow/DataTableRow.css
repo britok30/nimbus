@@ -1,0 +1,16 @@
+td {
+  padding: 10px 0;
+}
+
+.data-table-row {
+  border-bottom: 1px solid #000;
+  cursor: pointer;
+}
+
+.data-table-row:hover {
+  background-color: #eee;
+}
+
+.data-table-row:last-of-type {
+  border-bottom: none;
+}

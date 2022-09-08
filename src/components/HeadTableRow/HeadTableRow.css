@@ -1,0 +1,9 @@
+.head-table-row {
+  border-bottom: 1px solid #000;
+  border-top: 1px solid #000;
+}
+
+th {
+  text-align: left;
+  padding: 10px 0;
+}
