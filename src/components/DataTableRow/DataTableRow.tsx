@@ -31,7 +31,7 @@ export const DataTableRow = ({
           type="checkbox"
           name={name}
           onClick={handleClick}
-          defaultChecked={checkedItems.includes(name)}
+          checked={checkedItems.includes(name)}
         />
       </td>
       <td>{name}</td>
