@@ -1,26 +1,29 @@
-import React, { useState } from "react";
+import React from "react";
 import { capitalize } from "../../utils";
 import "./DataTableRow.css";
 
-export const DataTableRow = ({ item, index }) => {
-  const [checked, setChecked] = useState(false);
+export const DataTableRow = ({ item, index, checkedItems, handleClick }) => {
+  const { name, device, path, status } = item;
   return (
     <tr
       className="data-table-row"
       key={index}
-      onClick={() => setChecked(!checked)}
+      style={{
+        backgroundColor: checkedItems.includes(name) ? "#d8d8d8" : "",
+      }}
     >
       <td>
         <input
           className="data-table-row__checkbox"
-          onClick={() => setChecked(!checked)}
           type="checkbox"
-          checked={checked}
+          name={name}
+          onClick={handleClick}
+          checked={checkedItems.includes(name)}
         />
       </td>
-      <td>{item.name}</td>
-      <td>{item.device}</td>
-      <td>{item.path}</td>
+      <td>{name}</td>
+      <td>{device}</td>
+      <td>{path}</td>
       <td
         style={{
           display: "flex",
@@ -29,11 +32,11 @@ export const DataTableRow = ({ item, index }) => {
         <div
           className="data-table-cell__status-circle"
           style={{
-            visibility: item.status !== "available" ? "hidden" : "visible",
+            visibility: status !== "available" ? "hidden" : "visible",
           }}
         ></div>
 
-        {capitalize(item.status)}
+        {capitalize(status)}
       </td>
     </tr>
   );
