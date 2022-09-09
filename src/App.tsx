@@ -6,9 +6,9 @@ import { data } from "./data";
 import { Header } from "./components/Header/Header";
 
 const App = () => {
-  const selectAllCheckboxRef = useRef();
-  const [isCheckAll, setIsCheckAll] = useState(false);
-  const [checkedItems, setCheckedItems] = useState([]);
+  const selectAllCheckboxRef = useRef<HTMLInputElement>();
+  const [isCheckAll, setIsCheckAll] = useState<boolean>(false);
+  const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
   const handleSelectAll = () => {
     setIsCheckAll(!isCheckAll);
@@ -19,8 +19,8 @@ const App = () => {
     }
   };
 
-  const handleClick = (e) => {
-    const { name, checked } = e.target;
+  const handleClick = (e: React.MouseEvent) => {
+    const { name, checked } = e.target as HTMLInputElement;
     setCheckedItems([...checkedItems, name]);
 
     if (!checked) {
@@ -42,6 +42,7 @@ const App = () => {
     <div className="main-outer">
       <div className="main-inner">
         <Header
+          data={data}
           checkboxRef={selectAllCheckboxRef}
           checkedItems={checkedItems}
           handleSelectAll={handleSelectAll}
@@ -50,7 +51,7 @@ const App = () => {
         <table>
           <colgroup>
             <col />
-            <col span="2" />
+            <col span={2} />
             <col width="40%" />
             <col />
           </colgroup>

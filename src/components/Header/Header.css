@@ -8,14 +8,18 @@
 }
 
 .header__details {
-  margin-left: 50px;
+  margin-left: 30px;
 }
 
-.header__selected {
+.header__text {
   font-size: 20px;
-  margin-right: 100px;
 }
 
 .header__download-btn {
   font-size: 20px;
+  outline: none;
+  border: none;
+  background-color: #fff;
+  cursor: pointer;
+  margin-left: 6rem;
 }
