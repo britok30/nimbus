@@ -5,7 +5,6 @@ td {
 
 .data-table-row {
   border-bottom: 1px solid rgb(212, 212, 212);
-  cursor: pointer;
 }
 
 .data-table-row:hover {
