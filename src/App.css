@@ -2,6 +2,13 @@ table {
   border-collapse: collapse;
 }
 
+input[type="checkbox"] {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin-left: 10px;
+}
+
 .main-outer {
   width: 100%;
   min-height: 100vh;
