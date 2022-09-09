@@ -66,6 +66,7 @@ const App = () => {
                 item={item}
                 index={index}
                 checkedItems={checkedItems}
+                setCheckedItems={setCheckedItems}
                 handleClick={handleClick}
               />
             ))}
