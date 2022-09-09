@@ -1,5 +1,6 @@
 import React from "react";
 import { Data } from "../../types";
+import { ghostDownload } from "../../utils";
 import "./Header.css";
 
 export const Header = ({
@@ -30,22 +31,24 @@ export const Header = ({
       return false;
     });
 
-    // Trigger download only for available status
+    // If we have selected items, we show the alert
+    if (selected.length > 0) {
+      alertMessage(selected);
+    }
+
+    // // Trigger download only for available status
     selected.forEach((item) => {
       if (item.status === "available") {
-        downloadFile(item.path);
+        ghostDownload(item.name, item.path);
       }
     });
   };
 
-  const downloadFile = (file: any) => {
-    const link = document.createElement("a");
-    link.style.display = "none";
-    link.href = URL.createObjectURL(file);
-    link.download = file.name;
+  const alertMessage = (arr: Data[]) => {
+    const device = arr.map((item) => item.device).join("\n");
+    const path = arr.map((item) => item.path).join("\n");
 
-    document.body.appendChild(link);
-    link.click();
+    alert(`Device(s):\n${device}\n\nPath(s):\n${path}`);
   };
 
   return (
