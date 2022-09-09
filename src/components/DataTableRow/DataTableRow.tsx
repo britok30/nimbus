@@ -26,12 +26,14 @@ export const DataTableRow = ({
     >
       <td>
         <input
+          data-testid="data-table-row__checkbox"
           aria-label={`${name}-checkbox`}
           className="data-table-row__checkbox"
           type="checkbox"
           name={name}
           onClick={handleClick}
           checked={checkedItems.includes(name)}
+          readOnly
         />
       </td>
       <td>{name}</td>

@@ -54,6 +54,7 @@ export const Header = ({
   return (
     <div className="header">
       <input
+        data-testid="select-all-checkbox"
         aria-label="select-all-checkbox"
         ref={checkboxRef}
         onClick={handleSelectAll}
