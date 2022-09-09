@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./App.css";
 import { HeadTableRow } from "./components/HeadTableRow/HeadTableRow";
 import { DataTableRow } from "./components/DataTableRow/DataTableRow";
@@ -6,6 +6,7 @@ import { data } from "./data";
 import { Header } from "./components/Header/Header";
 
 const App = () => {
+  const selectAllCheckboxRef = useRef();
   const [isCheckAll, setIsCheckAll] = useState(false);
   const [checkedItems, setCheckedItems] = useState([]);
 
@@ -27,10 +28,24 @@ const App = () => {
     }
   };
 
+  useEffect(() => {
+    if (!selectAllCheckboxRef.current) return;
+
+    if (checkedItems.length > 0 && !isCheckAll) {
+      selectAllCheckboxRef.current.indeterminate = true;
+    } else {
+      selectAllCheckboxRef.current.indeterminate = false;
+    }
+  }, [checkedItems, isCheckAll]);
+
   return (
     <div className="main-outer">
       <div className="main-inner">
-        <Header />
+        <Header
+          checkboxRef={selectAllCheckboxRef}
+          checkedItems={checkedItems}
+          handleSelectAll={handleSelectAll}
+        />
 
         <table>
           <colgroup>
@@ -39,16 +54,21 @@ const App = () => {
             <col width="40%" />
             <col />
           </colgroup>
-          <HeadTableRow />
+          <thead>
+            <HeadTableRow />
+          </thead>
 
-          {data.map((item, index) => (
-            <DataTableRow
-              item={item}
-              index={index}
-              checkedItems={checkedItems}
-              handleClick={handleClick}
-            />
-          ))}
+          <tbody>
+            {data.map((item, index) => (
+              <DataTableRow
+                key={index}
+                item={item}
+                index={index}
+                checkedItems={checkedItems}
+                handleClick={handleClick}
+              />
+            ))}
+          </tbody>
         </table>
       </div>
     </div>

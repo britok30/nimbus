@@ -17,7 +17,7 @@ export const DataTableRow = ({ item, index, checkedItems, handleClick }) => {
           className="data-table-row__checkbox"
           type="checkbox"
           name={name}
-          onClick={handleClick}
+          onChange={handleClick}
           checked={checkedItems.includes(name)}
         />
       </td>
