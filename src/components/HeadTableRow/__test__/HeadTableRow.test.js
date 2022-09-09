@@ -2,7 +2,13 @@ import { render, screen } from "@testing-library/react";
 import { HeadTableRow } from "../HeadTableRow";
 
 test("renders table head cells on page", () => {
-  render(<HeadTableRow />);
+  render(
+    <table>
+      <thead>
+        <HeadTableRow />
+      </thead>
+    </table>
+  );
   const headNameCellElement = screen.getByText(/Name/i);
   expect(headNameCellElement).toBeInTheDocument();
 
