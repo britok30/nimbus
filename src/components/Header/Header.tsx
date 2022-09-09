@@ -1,4 +1,5 @@
 import React from "react";
+import { Data } from "../../types";
 import "./Header.css";
 
 export const Header = ({
@@ -6,6 +7,11 @@ export const Header = ({
   checkboxRef,
   checkedItems,
   handleSelectAll,
+}: {
+  data: Data[];
+  checkboxRef: React.Ref<HTMLInputElement>;
+  checkedItems: string[];
+  handleSelectAll: () => void;
 }) => {
   const handleCountText = () => {
     if (checkedItems.length > 0) {
@@ -32,7 +38,7 @@ export const Header = ({
     });
   };
 
-  const downloadFile = (file) => {
+  const downloadFile = (file: any) => {
     const link = document.createElement("a");
     link.style.display = "none";
     link.href = URL.createObjectURL(file);

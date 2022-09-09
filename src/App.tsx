@@ -6,7 +6,7 @@ import { data } from "./data";
 import { Header } from "./components/Header/Header";
 
 const App = () => {
-  const selectAllCheckboxRef = useRef<HTMLInputElement>();
+  const checkboxRef = useRef() as React.MutableRefObject<HTMLInputElement>;
   const [isCheckAll, setIsCheckAll] = useState<boolean>(false);
   const [checkedItems, setCheckedItems] = useState<string[]>([]);
 
@@ -29,12 +29,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    if (!selectAllCheckboxRef.current) return;
+    if (!checkboxRef.current) return;
 
     if (checkedItems.length > 0 && !isCheckAll) {
-      selectAllCheckboxRef.current.indeterminate = true;
+      checkboxRef.current.indeterminate = true;
     } else {
-      selectAllCheckboxRef.current.indeterminate = false;
+      checkboxRef.current.indeterminate = false;
     }
   }, [checkedItems, isCheckAll]);
 
@@ -43,7 +43,7 @@ const App = () => {
       <div className="main-inner">
         <Header
           data={data}
-          checkboxRef={selectAllCheckboxRef}
+          checkboxRef={checkboxRef}
           checkedItems={checkedItems}
           handleSelectAll={handleSelectAll}
         />

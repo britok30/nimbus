@@ -1,8 +1,19 @@
 import React from "react";
+import { Data } from "../../types";
 import { capitalize } from "../../utils";
 import "./DataTableRow.css";
 
-export const DataTableRow = ({ item, index, checkedItems, handleClick }) => {
+export const DataTableRow = ({
+  item,
+  index,
+  checkedItems,
+  handleClick,
+}: {
+  item: Data;
+  index: number;
+  checkedItems: string[];
+  handleClick: (e: React.MouseEvent) => void;
+}) => {
   const { name, device, path, status } = item;
   return (
     <tr
