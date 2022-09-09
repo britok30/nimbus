@@ -17,6 +17,7 @@ export const DataTableRow = ({
   const { name, device, path, status } = item;
   return (
     <tr
+      data-testid="data-table-row"
       className="data-table-row"
       key={index}
       style={{
@@ -25,11 +26,12 @@ export const DataTableRow = ({
     >
       <td>
         <input
+          aria-label={`${name}-checkbox`}
           className="data-table-row__checkbox"
           type="checkbox"
           name={name}
           onClick={handleClick}
-          checked={checkedItems.includes(name)}
+          defaultChecked={checkedItems.includes(name)}
         />
       </td>
       <td>{name}</td>

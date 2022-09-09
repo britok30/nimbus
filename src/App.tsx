@@ -31,6 +31,8 @@ const App = () => {
   useEffect(() => {
     if (!checkboxRef.current) return;
 
+    // Only add in the indeterminate state when we have
+    // selected items but
     if (checkedItems.length > 0 && !isCheckAll) {
       checkboxRef.current.indeterminate = true;
     } else {
@@ -39,8 +41,8 @@ const App = () => {
   }, [checkedItems, isCheckAll]);
 
   return (
-    <div className="main-outer">
-      <div className="main-inner">
+    <div className="outer">
+      <main className="main">
         <Header
           data={data}
           checkboxRef={checkboxRef}
@@ -71,7 +73,7 @@ const App = () => {
             ))}
           </tbody>
         </table>
-      </div>
+      </main>
     </div>
   );
 };

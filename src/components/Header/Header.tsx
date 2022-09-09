@@ -54,6 +54,7 @@ export const Header = ({
   return (
     <div className="header">
       <input
+        aria-label="select-all-checkbox"
         ref={checkboxRef}
         onClick={handleSelectAll}
         className="header__checkbox"
@@ -61,7 +62,11 @@ export const Header = ({
       />
       <div className="header__details">
         <span className="header__text">{handleCountText()}</span>
-        <button onClick={handleDownloadClick} className="header__download-btn">
+        <button
+          aria-label="download"
+          onClick={handleDownloadClick}
+          className="header__download-btn"
+        >
           Download selected
         </button>
       </div>
